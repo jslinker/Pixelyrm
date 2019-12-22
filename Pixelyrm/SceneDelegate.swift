@@ -9,21 +9,43 @@
 import UIKit
 import SwiftUI
 
+class ContentViewController<Content>: UIHostingController<Content> where Content : View {
+    
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
+    }
+    
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    @Published var appModel = AppModel()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
+        // Create the SwiftUI view that provides the window contents.
+        let contentView = ContentView()
+            .environmentObject(appModel)
+            .environmentObject(appModel.colorManager)
+            .environmentObject(appModel.colorPalette)
+            .environmentObject(appModel.drawManager)
+            .environmentObject(appModel.historyManager)
+            .environmentObject(appModel.toolManager)
+            .environmentObject(appModel.effectManager)
+            .environmentObject(appModel.layerManager)
 
-        // Use a UIHostingController as window root view controller
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = UIHostingController(rootView: ContentView())
-        self.window = window
-        window.makeKeyAndVisible()
+        // Use a UIHostingController as window root view controller.
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = ContentViewController(rootView: contentView)
+            self.window = window
+            window.makeKeyAndVisible()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -53,7 +75,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
 
 }
 

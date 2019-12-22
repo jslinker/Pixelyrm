@@ -8,16 +8,14 @@
 
 import SwiftUI
 
-struct ContentView : View {
+struct ContentView: View {
+    
     var body: some View {
-        Text("Hello World")
+        VStack(spacing: 0) {
+            DrawView()
+            MenuView()
+        }
+            .background(Color.init(red: 0.1, green: 0.1, blue: 0.1).edgesIgnoringSafeArea(.all)) // TODO: Make a color theme
     }
+    
 }
-
-#if DEBUG
-struct ContentView_Previews : PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-#endif
