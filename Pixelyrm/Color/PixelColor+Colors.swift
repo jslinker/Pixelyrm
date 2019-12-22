@@ -8,22 +8,38 @@
 
 import CoreGraphics
 import Foundation
+import SwiftUI
+
+extension PixelColor {
+    
+    static var clear: PixelColor { .init(red: 0, green: 0, blue: 0, alpha: 0) }
+    static var white: PixelColor { .init(red: 255, green: 255, blue: 255) }
+    static var black: PixelColor { .init(red: 0, green: 0, blue: 0) }
+    static var red: PixelColor { .init(red: 255, green: 0, blue: 0) }
+    static var green: PixelColor { .init(red: 0, green: 255, blue: 0) }
+    static var blue: PixelColor { .init(red: 0, green: 0, blue: 255) }
+    
+    var color: Color {
+        return Color(red: Double(red) / 255.0, green: Double(green) / 255.0, blue: Double(blue) / 255.0).opacity(Double(alpha) / 255.0)
+    }
+    
+}
 
 extension PixelColor {
     
     // TODO: Update - temp solution
     func lighterPixel() -> PixelColor {
-        let (hue, saturationHSV, brightness) = PixelColor.rgbToHSV(red: r, green: g, blue: b)
+        let (hue, saturationHSV, brightness) = PixelColor.rgbToHSV(red: red, green: green, blue: blue)
         // TODO: Don't clamp at 0/360, needs to wrap
         let (red, green, blue) = PixelColor.hsvToRGB(hue: max(0, hue - 15), saturation: UInt8(min(100, Int(saturationHSV) - 5)), brightness: UInt8(min(100, Int(brightness) - 5)))
-        return PixelColor(r: red, g: green, b: blue)
+        return PixelColor(red: red, green: green, blue: blue)
     }
     
     func darkerPixel() -> PixelColor {
-        let (hue, saturationHSV, brightness) = PixelColor.rgbToHSV(red: r, green: g, blue: b)
+        let (hue, saturationHSV, brightness) = PixelColor.rgbToHSV(red: red, green: green, blue: blue)
         // TODO: Don't clamp at 0/360, needs to wrap
         let (red, green, blue) = PixelColor.hsvToRGB(hue: min(360, hue + 15), saturation: UInt8(max(0, Int(saturationHSV) - 5)), brightness: UInt8(max(0, Int(brightness) - 5)))
-        return PixelColor(r: red, g: green, b: blue)
+        return PixelColor(red: red, green: green, blue: blue)
     }
     
     static func hsvToRGB(hue: CGFloat, saturation: UInt8, brightness: UInt8) -> (red: UInt8, green: UInt8, blue: UInt8) {

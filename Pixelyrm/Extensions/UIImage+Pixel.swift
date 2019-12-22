@@ -54,9 +54,9 @@ extension UIImage {
 extension UIImage {
     
     static var checkerImage: UIImage {
-        var pixels: [PixelColor] = [PixelColor](repeating: PixelColor(r:240, g: 240, b: 240), count: 4)
-        pixels[0] = PixelColor(r:230, g: 230, b: 230)
-        pixels[3] = PixelColor(r:230, g: 230, b: 230)
+        var pixels: [PixelColor] = [PixelColor](repeating: PixelColor(red: 240, green: 240, blue: 240), count: 4)
+        pixels[0] = PixelColor(red: 230, green: 230, blue: 230)
+        pixels[3] = PixelColor(red: 230, green: 230, blue: 230)
         do {
             return try pixels.image(size: .init(width: 2, height: 2))
         } catch {

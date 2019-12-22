@@ -62,6 +62,7 @@ class TouchInputUIView: UIView {
     }
     
     // TODO: Fix an issue where going out of cound then back in draws a line to the place the touch entered from where it exited
+    // TODO: Infer the location of the pixels to draw on when existing and entering so pixels will draw when a user draws outside the frame
     @objc private func panned(gesture: StartPanGestureRecognizer) {
         let location = gesture.location(in: self)
         guard frame.contains(location) else {
