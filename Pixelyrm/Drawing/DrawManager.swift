@@ -28,6 +28,7 @@ public class DrawManager: ObservableObject {
         self.color = color
     }
     
+    // TODO: Only save parts that were edited rather than the entire image data. EX: Crop edited area
     private func setupUndoForLayer(_ layer: LayerData, inCanvasLayer canvasLayer: CanvasLayer) {
         let pixels = layer.pixels
         historyManager.registerUndo(withTarget: self) { [weak self] target in

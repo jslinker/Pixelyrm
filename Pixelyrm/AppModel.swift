@@ -22,7 +22,7 @@ public class AppModel: ObservableObject {
     private var colorChangeHandler: AnyCancellable?
     private var activeLayerChangeHandler: AnyCancellable?
     
-    @Published var colorPalette = ColorPalette()
+    @Published var colorPalette: ColorPalette = ColorPalette()
     
     public init() {
         colorManager = ColorManager()
@@ -53,7 +53,10 @@ public class AppModel: ObservableObject {
                 myself.drawManager.activeCanvasLayer = myself.layerManager.activeCanvasLayer
         }
         
-        colorManager.primaryColor = colorPalette.colors.first ?? .black
+        DispatchQueue.main.async {
+            // Using `DispatchQueue.main.async` to fix an issue where the color isn't set for the mac catalyst app
+            self.colorManager.primaryColor = self.colorPalette.colors.first ?? .black
+        }
     }
     
 }

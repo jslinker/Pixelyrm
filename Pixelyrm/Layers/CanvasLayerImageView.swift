@@ -19,7 +19,7 @@ struct CanvasLayerView: View {
             .interpolation(.none)
             .renderingMode(.original)
         }
-
+        
         return nil
     }
     

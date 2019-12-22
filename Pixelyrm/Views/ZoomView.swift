@@ -14,7 +14,7 @@ public struct ZoomView<Content: View>: UIViewControllerRepresentable {
     
     @EnvironmentObject var layerManager: LayerManager
     
-    public var content: () -> Content
+    public let content: () -> Content
     
     public func makeUIViewController(context: Context) -> UIScrollViewController<Content> {
         let scrollViewController = UIScrollViewController(rootView: self.content(), contentSize: layerManager.size.cgSize)
@@ -52,6 +52,8 @@ public class UIScrollViewController<Content: View>: UIViewController, UIScrollVi
     fileprivate let contentView: UIView = {
         let contentView = UIView()
         contentView.isMultipleTouchEnabled = true
+        contentView.useNearestFilter()
+        contentView.backgroundColor = UIColor(patternImage: UIImage.checkerImage)
         return contentView
     }()
     
@@ -71,20 +73,12 @@ public class UIScrollViewController<Content: View>: UIViewController, UIScrollVi
         
         hostingController.willMove(toParent: self)
         
-        let imageView = UIImageView()
-        imageView.image = UIImage.checkerImage.resizableImage(withCapInsets: .zero, resizingMode: .tile)
-        imageView.useNearestFilter()
-        imageView.contentMode = .scaleToFill
-        imageView.contentScaleFactor *= 4
-        contentView.contentScaleFactor *= 4
-        contentView.addSubview(imageView)
         contentView.addSubview(hostingController.view)
         scrollView.addSubview(contentView)
         view.addSubview(scrollView)
         
         hostingController.didMove(toParent: self)
         
-        imageView.constrainToSuperview()
         scrollView.constrainToSuperview()
         hostingController.view.constrainToSuperview()
     }
