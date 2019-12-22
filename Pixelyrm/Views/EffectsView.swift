@@ -13,23 +13,11 @@ struct EffectsView : View {
     @EnvironmentObject var effectManager: EffectManager
     
     let cellSize: CGSize
+    let sizeToWidth: Bool
+    let sizeToHeight: Bool
     
     var body: some View {
-        ControlsView(verticalPadding: 2,
-                     horizontalPadding: 2,
-                     cellSize: cellSize,
-                     count: self.effectManager.effects.count,
-                     view: { index in
-                        Button(action: {
-                            // TODO: Handle!
-                        }) {
-                            PalettePixelContent(fillColor: .gray, strokeColor: .black) {
-                                Text(self.effectManager.effects[index].name)
-                                    .padding(1)
-                                    .truncationMode(.middle)
-                                    .font(.system(size: 14))
-                            }
-                        }
-        })
+        // TODO: Update to use GridView
+        EmptyView()
     }
 }

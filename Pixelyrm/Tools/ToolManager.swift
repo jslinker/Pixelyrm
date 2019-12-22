@@ -27,7 +27,7 @@ public class ToolManager: ObservableObject {
     
     init(historyManager: HistoryManager) {
         self.historyManager = historyManager
-        tools = [UndoTool(historyManager: historyManager), RedoTool(historyManager: historyManager), PencilTool(), LineTool(), EraserTool(), EraserFloodTool(), RectangleOutlineTool(), RectangleFillTool(), FloodTool(), FloodTool(), FloodTool()]
+        tools = [UndoTool(historyManager: historyManager), RedoTool(historyManager: historyManager), PencilTool(), LineTool(), EraserTool(), EraserFloodTool(), RectangleOutlineTool(), RectangleFillTool(), FloodTool()]
         activeTool = tools.first(where: { $0 is PencilTool })!
     }
 

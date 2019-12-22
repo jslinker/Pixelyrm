@@ -52,7 +52,7 @@ public class LayerData: ObservableObject {
     
     init(size: IntSize, pixels: [PixelColor]? = nil) {
         self.size = size
-        let pixels = pixels ?? [PixelColor](repeating: PixelColor(a: 0, r: 0, g: 0, b: 0), count: size.width * size.height)
+        let pixels = pixels ?? [PixelColor](repeating: PixelColor(red: 0, green: 0, blue: 0, alpha: 0), count: size.width * size.height)
         self.pixels = pixels
     }
     

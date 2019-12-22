@@ -40,6 +40,10 @@ public protocol ToolProtocol {
     
 }
 
+func ==(lhs: ToolProtocol, rhs: ToolProtocol) -> Bool {
+    return type(of: lhs) == type(of: rhs)
+}
+
 extension ToolProtocol {
     
     var isSelectable: Bool { true }
