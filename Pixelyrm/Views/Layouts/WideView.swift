@@ -17,7 +17,7 @@ struct WideView : View {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 0) {
                             ColorPickerView(layout: .maxColumns(4), cellSize: .init(width: 32, height: 32))
-                            .padding(2)
+                                .padding(2)
                         }
                     }
                     
@@ -27,12 +27,12 @@ struct WideView : View {
                         .background(Color(red: 0.1, green: 0.1, blue: 0.1).edgesIgnoringSafeArea(.all)) // TODO: Make a color theme
                     
                     ScrollView(.vertical, showsIndicators: false) {
-                        LayersListView(layout: .maxColumns(1), cellSize: .init(width: 44, height: 44))
+                        LayersListView(layout: .maxColumns(1), cellSize: .init(width: 32, height: 32))
                             .padding(2)
                     }
                     ScrollView(.vertical, showsIndicators: false) {
                         ToolPickerView(layout: .maxColumns(2), cellSize: .init(width: 40, height: 40))
-                        .padding(2)
+                            .padding(2)
                     }
                 }
             }

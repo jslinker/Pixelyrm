@@ -10,6 +10,17 @@ import Combine
 import Foundation
 import UIKit
 
+extension Tool: Equatable {
+    public static func == (lhs: Tool, rhs: Tool) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
+class Tool: ObservableObject, Identifiable {
+    var toolDisplayableImage: UIImage.AssetName = .circle
+    var id: String { String(describing: self) }
+}
+
 protocol ToolDisplayable {
     static var toolDisplayableImage: UIImage.AssetName { get }
 }
@@ -23,7 +34,7 @@ public class ToolManager: ObservableObject {
     @Published public var activeTool: ToolProtocol
     
     let historyManager: HistoryManager
-    let tools: [ToolProtocol & ToolDisplayable]
+    let tools: [Tool & ToolDisplayable & ToolProtocol] // Find a better way to do this. EX: Only using [Tool]
     
     init(historyManager: HistoryManager) {
         self.historyManager = historyManager

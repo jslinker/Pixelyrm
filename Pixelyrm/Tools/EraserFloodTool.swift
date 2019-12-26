@@ -13,7 +13,7 @@ extension EraserFloodTool: ToolDisplayable {
     static let toolDisplayableImage: UIImage.AssetName = .eraser
 }
 
-struct EraserFloodTool: ToolProtocol {
+class EraserFloodTool: Tool, ToolProtocol {
     
     let clearOnMoved: Bool = false
     let moveToDrawCanvasOnBegin: Bool = true

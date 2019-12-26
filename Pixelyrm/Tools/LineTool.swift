@@ -16,7 +16,7 @@ extension LineTool: ToolDisplayable {
     static let toolDisplayableImage: UIImage.AssetName = .line
 }
 
-struct LineTool: ToolProtocol {
+class LineTool: Tool, ToolProtocol {
     
     let clearOnMoved: Bool = true
     let moveToDrawCanvasOnBegin: Bool = false
