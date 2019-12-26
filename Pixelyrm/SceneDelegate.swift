@@ -38,6 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .environmentObject(appModel.toolManager)
             .environmentObject(appModel.effectManager)
             .environmentObject(appModel.layerManager)
+            .environmentObject(appModel.menuManager)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

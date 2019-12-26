@@ -7,29 +7,30 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 
 // TODO: Add thickness https://saideepdicholkar.blogspot.com/2017/04/bresenhams-line-algorithm-thick-line.html
 // https://saideepdicholkar.blogspot.com/2017/02/midpoint-ellipse-algorithm-ellipse.html
 
-extension LineTool: ToolDisplayable {
-    static let toolDisplayableImage: UIImage.AssetName = .line
-}
-
-class LineTool: Tool, ToolProtocol {
+public class LineTool: Tool {
     
-    let clearOnMoved: Bool = true
-    let moveToDrawCanvasOnBegin: Bool = false
-    let updateFromStart: Bool = true
+    public init() {
+        super.init(image: .symbol(.line),
+                   isSelectable: true,
+                   clearOnMoved: true,
+                   moveToDrawCanvasOnBegin: false,
+                   updateFromStart: true,
+                   color: nil)
+    }
     
-    func canDraw(for state: ToolRunState) -> Bool {
+    public override func canDraw(for state: ToolRunState) -> Bool {
         switch state {
         case .begin, .move: return true
         case .end: return false
         }
     }
     
-    static func pointsToModify(startPoint: IntPoint, endPoint: IntPoint, inPixels pixels: [PixelColor], withSize size: IntSize, selectedColor: PixelColor) -> [IntPoint] {
+    public override class func pointsToModify(startPoint: IntPoint, endPoint: IntPoint, inPixels pixels: [PixelColor], withSize size: IntSize, selectedColor: PixelColor) -> [IntPoint] {
         return LineTool.lineBresenham(startPoint: startPoint, endPoint: endPoint)
     }
 

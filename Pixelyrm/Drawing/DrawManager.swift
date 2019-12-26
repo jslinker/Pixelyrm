@@ -13,7 +13,7 @@ public class DrawManager: ObservableObject {
     
     var activeCanvasLayer: CanvasLayer
     let historyManager: HistoryManager
-    var tool: ToolProtocol
+    var tool: Tool
     var color: PixelColor
     var drawColor: PixelColor { tool.color ?? color }
     
@@ -21,7 +21,7 @@ public class DrawManager: ObservableObject {
     private var canvasStartLocation: IntPoint = .zero
     private var canvasCurrentLocation: IntPoint = .zero
     
-    init(historyManager: HistoryManager, activeLayer: CanvasLayer, tool: ToolProtocol, color: PixelColor) {
+    init(historyManager: HistoryManager, activeLayer: CanvasLayer, tool: Tool, color: PixelColor) {
         self.historyManager = historyManager
         self.activeCanvasLayer = activeLayer
         self.tool = tool

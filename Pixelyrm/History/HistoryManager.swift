@@ -9,7 +9,7 @@
 import Combine
 import Foundation
 
-class HistoryManager: ObservableObject {
+public class HistoryManager: ObservableObject {
     
     private let undoManager: UndoManager = UndoManager()
     

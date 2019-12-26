@@ -40,6 +40,12 @@ enum GridViewLayout {
 
 struct GridView<Content: View> : View {
     
+    enum CellSize {
+        case flexibleWidth(height: CGFloat)
+        case flexibleHeight(width: CGFloat)
+        case custom(width: CGFloat, height: CGFloat)
+    }
+    
     let maxColumns: Int
     let cellSize: CGSize
     let cellPadding: CGSize

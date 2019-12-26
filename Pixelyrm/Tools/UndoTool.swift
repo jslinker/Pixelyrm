@@ -7,22 +7,18 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 
-extension UndoTool: ToolDisplayable {
-    static let toolDisplayableImage: UIImage.AssetName = .circle
-}
-
-class UndoTool: Tool, ToolProtocol {
+public class UndoTool: Tool {
     
-    let historyManager: HistoryManager
-    let isSelectable: Bool = false
+    private let historyManager: HistoryManager
     
-    init(historyManager: HistoryManager) {
+    public init(historyManager: HistoryManager) {
         self.historyManager = historyManager
+        super.init(image: .symbol(.undo), isSelectable: false)
     }
     
-    func didTap() {
+    public override func didTap() {
         historyManager.undo()
     }
     

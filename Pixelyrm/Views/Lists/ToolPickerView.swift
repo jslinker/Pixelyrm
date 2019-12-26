@@ -21,13 +21,14 @@ struct ToolPickerView : View {
         self.cellSize = cellSize
     }
     
-    private func toolCell(for tool: ToolProtocol & ToolDisplayable, at index: Int) -> some View {
+    private func toolCell(for tool: Tool, at index: Int) -> some View {
         let isActive = self.toolManager.activeTool == tool
-        return PalettePixelContent(fillColor: isActive ? Color.white : Color.gray,
-                                   strokeColor: isActive ? Color.black : Color.gray) {
-                                    Image(uiImage: tool.toolImage)
-                                        .apply(modifier: .pixelArt)
-                                        .padding(4)
+        let fillColor: Color = isActive ? .white : .gray // TODO: Update to use a theme color
+        let strokeColor: Color = isActive ? .black : .gray // TODO: Update to use a theme color
+        return PalettePixelContent(fillColor: fillColor, strokeColor: strokeColor) {
+            tool.image
+                .apply(modifier: .pixelArt)
+                .padding(4)
         }
     }
     

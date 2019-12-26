@@ -7,26 +7,27 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 
-extension CircleOutlineTool: ToolDisplayable {
-    static let toolDisplayableImage: UIImage.AssetName = .circle
-}
-
-class CircleOutlineTool: Tool, ToolProtocol {
+public class CircleOutlineTool: Tool {
     
-    let clearOnMoved: Bool = true
-    let moveToDrawCanvasOnBegin: Bool = false
-    let updateFromStart: Bool = true
+    public init() {
+        super.init(image: .symbol(.circle),
+                   isSelectable: true,
+                   clearOnMoved: true,
+                   moveToDrawCanvasOnBegin: false,
+                   updateFromStart: true,
+                   color: nil)
+    }
     
-    func canDraw(for state: ToolRunState) -> Bool {
+    public override func canDraw(for state: ToolRunState) -> Bool {
         switch state {
         case .begin, .move: return true
         case .end: return false
         }
     }
     
-    static func pointsToModify(startPoint: IntPoint, endPoint: IntPoint, inPixels pixels: [PixelColor], withSize size: IntSize, selectedColor: PixelColor) -> [IntPoint] {
+    public override class func pointsToModify(startPoint: IntPoint, endPoint: IntPoint, inPixels pixels: [PixelColor], withSize size: IntSize, selectedColor: PixelColor) -> [IntPoint] {
         // TODO: Create oval tool so the user can create a oval between the start and end point
         return []
     }
