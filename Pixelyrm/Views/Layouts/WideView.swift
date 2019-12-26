@@ -15,6 +15,10 @@ struct WideView : View {
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
                     ScrollView(.vertical, showsIndicators: false) {
+                        MenuView(layout: .maxColumns(1), cellSize: .init(width: 44, height: 44))
+                            .padding(2)
+                    }
+                    ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 0) {
                             ColorPickerView(layout: .maxColumns(4), cellSize: .init(width: 32, height: 32))
                                 .padding(2)
@@ -25,6 +29,7 @@ struct WideView : View {
                     DrawView()
                         .edgesIgnoringSafeArea(.all)
                         .background(Color(red: 0.1, green: 0.1, blue: 0.1).edgesIgnoringSafeArea(.all)) // TODO: Make a color theme
+                        .padding(.bottom) // TODO: There is an issue where the scrollview does adjust its insets correctly causing the draw area to be cut off, this is a temporary fix which is unpleasing to the eye
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         LayersListView(layout: .maxColumns(1), cellSize: .init(width: 32, height: 32))

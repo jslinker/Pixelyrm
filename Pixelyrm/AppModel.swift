@@ -16,6 +16,7 @@ public class AppModel: ObservableObject {
     let effectManager: EffectManager
     let historyManager: HistoryManager
     let layerManager: LayerManager
+    let menuManager: MenuManager
     let toolManager: ToolManager
     
     private var toolChangedHandler: AnyCancellable?
@@ -29,6 +30,7 @@ public class AppModel: ObservableObject {
         effectManager = EffectManager()
         historyManager = HistoryManager()
         layerManager = LayerManager()
+        menuManager = MenuManager()
         toolManager = ToolManager(historyManager: historyManager)
         
         drawManager = DrawManager(historyManager: historyManager, activeLayer: layerManager.activeCanvasLayer, tool: toolManager.activeTool, color: colorManager.primaryColor)
@@ -65,7 +67,7 @@ public class AppModel: ObservableObject {
 
 extension AppModel {
     
-    public func toolChanged(_ closure: @escaping (_ tool: ToolProtocol) -> Void) -> AnyCancellable {
+    public func toolChanged(_ closure: @escaping (_ tool: Tool) -> Void) -> AnyCancellable {
         return toolManager.toolPublisher
             .receive(on: RunLoop.main)
             .sink { closure($0) }

@@ -7,19 +7,20 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 
-extension FloodTool: ToolDisplayable {
-    static let toolDisplayableImage: UIImage.AssetName = .circle // TODO: Update
-}
-
-class FloodTool: Tool, ToolProtocol {
+public class FloodTool: Tool {
     
-    let clearOnMoved: Bool = false
-    let moveToDrawCanvasOnBegin: Bool = true
-    let updateFromStart: Bool = false
+    public init() {
+        super.init(image: .symbol(.flood),
+                   isSelectable: true,
+                   clearOnMoved: false,
+                   moveToDrawCanvasOnBegin: true,
+                   updateFromStart: false,
+                   color: nil)
+    }
     
-    func canDraw(for state: ToolRunState) -> Bool {
+    public override func canDraw(for state: ToolRunState) -> Bool {
         switch state {
         case .begin, .move: return true
         case .end: return false
@@ -30,7 +31,7 @@ class FloodTool: Tool, ToolProtocol {
     // TODO: Convert to C function
     // https://lodev.org/cgtutor/floodfill.html#Recursive_Scanline_Floodfill_Algorithm
     // https://tech.bakkenbaeck.com/post/swift-c-interop
-    static func pointsToModify(startPoint: IntPoint, endPoint: IntPoint, inPixels pixels: [PixelColor], withSize size: IntSize, selectedColor: PixelColor) -> [IntPoint] {
+    public override class func pointsToModify(startPoint: IntPoint, endPoint: IntPoint, inPixels pixels: [PixelColor], withSize size: IntSize, selectedColor: PixelColor) -> [IntPoint] {
         let startColor = pixels.pixel(at: startPoint, imageSize: size)
         guard selectedColor != startColor else { return [] } // Already the correct color
         
