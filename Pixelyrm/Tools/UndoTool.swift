@@ -13,7 +13,7 @@ extension UndoTool: ToolDisplayable {
     static let toolDisplayableImage: UIImage.AssetName = .circle
 }
 
-struct UndoTool: ToolProtocol {
+class UndoTool: Tool, ToolProtocol {
     
     let historyManager: HistoryManager
     let isSelectable: Bool = false

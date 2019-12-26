@@ -13,7 +13,7 @@ extension RedoTool: ToolDisplayable {
     static let toolDisplayableImage: UIImage.AssetName = .circle
 }
 
-struct RedoTool: ToolProtocol {
+class RedoTool: Tool, ToolProtocol {
     
     let historyManager: HistoryManager
     let isSelectable: Bool = false

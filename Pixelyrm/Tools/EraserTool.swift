@@ -14,7 +14,7 @@ extension EraserTool: ToolDisplayable {
 }
 
 // TODO: Make Eraser Rect/Circle
-struct EraserTool: ToolProtocol {
+class EraserTool: Tool, ToolProtocol {
     
     let clearOnMoved: Bool = false
     let moveToDrawCanvasOnBegin: Bool = true

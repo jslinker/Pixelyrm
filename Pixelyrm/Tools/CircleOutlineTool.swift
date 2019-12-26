@@ -13,7 +13,7 @@ extension CircleOutlineTool: ToolDisplayable {
     static let toolDisplayableImage: UIImage.AssetName = .circle
 }
 
-struct CircleOutlineTool: ToolProtocol {
+class CircleOutlineTool: Tool, ToolProtocol {
     
     let clearOnMoved: Bool = true
     let moveToDrawCanvasOnBegin: Bool = false

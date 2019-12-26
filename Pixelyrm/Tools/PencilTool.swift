@@ -13,7 +13,7 @@ extension PencilTool: ToolDisplayable {
     static let toolDisplayableImage: UIImage.AssetName = .pencil
 }
 
-struct PencilTool: ToolProtocol {
+class PencilTool: Tool, ToolProtocol {
     
     let clearOnMoved: Bool = false
     let moveToDrawCanvasOnBegin: Bool = true

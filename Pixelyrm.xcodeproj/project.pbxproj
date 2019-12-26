@@ -28,6 +28,7 @@
 		4D626E0222B905620082631D /* ElipseTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D626E0122B905620082631D /* ElipseTool.swift */; };
 		4D626E0422B906360082631D /* RotateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D626E0322B906360082631D /* RotateTool.swift */; };
 		4D626E0622B906DB0082631D /* TransformTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D626E0522B906DB0082631D /* TransformTool.swift */; };
+		4D65620B23B325F000F878E6 /* GridListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D65620A23B325F000F878E6 /* GridListView.swift */; };
 		4D704A2523A87AB8004950BF /* TouchInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D704A2423A87AB8004950BF /* TouchInputView.swift */; };
 		4D7F387822B0892900D9B606 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F387722B0892900D9B606 /* UIView+Additions.swift */; };
 		4D7F387A22B08D6000D9B606 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F387922B08D6000D9B606 /* String+Additions.swift */; };
@@ -46,6 +47,8 @@
 		4DBFD3C922B6D6CF00A18CB7 /* IntPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFD3C822B6D6CF00A18CB7 /* IntPoint.swift */; };
 		4DBFD3CB22B6E1D200A18CB7 /* UIView+NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFD3CA22B6E1D200A18CB7 /* UIView+NSLayoutConstraint.swift */; };
 		4DBFD3CD22B6E36800A18CB7 /* CGSize+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBFD3CC22B6E36800A18CB7 /* CGSize+Additions.swift */; };
+		4DCBB6A923B537870040BC19 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCBB6A823B537870040BC19 /* ViewModifiers.swift */; };
+		4DCBB6B023B54FF60040BC19 /* FileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCBB6AF23B54FF60040BC19 /* FileView.swift */; };
 		4DD2865B23A6D54B007D632D /* LayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2865A23A6D54B007D632D /* LayerManager.swift */; };
 		4DD4728D22AF44F500AE22F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4728C22AF44F500AE22F0 /* AppDelegate.swift */; };
 		4DD4728F22AF44F500AE22F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4728E22AF44F500AE22F0 /* SceneDelegate.swift */; };
@@ -110,6 +113,7 @@
 		4D626E0122B905620082631D /* ElipseTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElipseTool.swift; sourceTree = "<group>"; };
 		4D626E0322B906360082631D /* RotateTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateTool.swift; sourceTree = "<group>"; };
 		4D626E0522B906DB0082631D /* TransformTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformTool.swift; sourceTree = "<group>"; };
+		4D65620A23B325F000F878E6 /* GridListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridListView.swift; sourceTree = "<group>"; };
 		4D704A2423A87AB8004950BF /* TouchInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchInputView.swift; sourceTree = "<group>"; };
 		4D7F387722B0892900D9B606 /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		4D7F387922B08D6000D9B606 /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 		4DBFD3C822B6D6CF00A18CB7 /* IntPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntPoint.swift; sourceTree = "<group>"; };
 		4DBFD3CA22B6E1D200A18CB7 /* UIView+NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+NSLayoutConstraint.swift"; sourceTree = "<group>"; };
 		4DBFD3CC22B6E36800A18CB7 /* CGSize+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Additions.swift"; sourceTree = "<group>"; };
+		4DCBB6A823B537870040BC19 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
+		4DCBB6AF23B54FF60040BC19 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
 		4DD2865A23A6D54B007D632D /* LayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerManager.swift; sourceTree = "<group>"; };
 		4DD4728922AF44F500AE22F0 /* Pixelyrm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pixelyrm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD4728C22AF44F500AE22F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -236,7 +242,10 @@
 		4D8B05872398A6DF00A9AAAC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4D65620A23B325F000F878E6 /* GridListView.swift */,
+				4D21478A23B00838002B24DD /* GridView.swift */,
 				4D8B05882398A7D600A9AAAC /* PalettePixel.swift */,
+				4DF18B9323947BB5007F98F1 /* SelectedColorsView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -248,6 +257,52 @@
 				4DBFD3C822B6D6CF00A18CB7 /* IntPoint.swift */,
 			);
 			path = DataTypes;
+			sourceTree = "<group>";
+		};
+		4DCBB6AB23B537CB0040BC19 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				4DCBB6A823B537870040BC19 /* ViewModifiers.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		4DCBB6AE23B54FEE0040BC19 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				4DCBB6AF23B54FF60040BC19 /* FileView.swift */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		4DCBB6B123B552AE0040BC19 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				4D21478423AFED0E002B24DD /* CompactView.swift */,
+				4D21478623AFEE08002B24DD /* WideView.swift */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
+		4DCBB6B223B552C00040BC19 /* InputViews */ = {
+			isa = PBXGroup;
+			children = (
+				4D704A2423A87AB8004950BF /* TouchInputView.swift */,
+				4D190F0223A8681200436018 /* ZoomView.swift */,
+				4D93894D23AED45100E1F854 /* DrawView.swift */,
+			);
+			path = InputViews;
+			sourceTree = "<group>";
+		};
+		4DCBB6B323B552CF0040BC19 /* Lists */ = {
+			isa = PBXGroup;
+			children = (
+				4DF18B8F2394635E007F98F1 /* ColorPickerView.swift */,
+				4D93894F23AED51E00E1F854 /* EffectsView.swift */,
+				4D1BC2CA23AC7EB600BE6DCD /* LayersListView.swift */,
+				4D8B05852398A6CE00A9AAAC /* ToolPickerView.swift */,
+			);
+			path = Lists;
 			sourceTree = "<group>";
 		};
 		4DD2865923A6D543007D632D /* Layers */ = {
@@ -299,6 +354,7 @@
 				4DF606CF2397653B002EA24C /* AppModel.swift */,
 				4DD8F77F23A08C3600D7FE18 /* Images.swift */,
 				4DD4729222AF44F700AE22F0 /* Assets.xcassets */,
+				4DCBB6AB23B537CB0040BC19 /* Modifiers */,
 				4D56BEEA23AFD3A900DDFF2F /* MenuManager */,
 				4D56BEE123AFBFE400DDFF2F /* FileHandling */,
 				4DEDD80123A9B6FE0028F0CF /* Drawing */,
@@ -307,7 +363,6 @@
 				4DD2865923A6D543007D632D /* Layers */,
 				4DF18B8A23946139007F98F1 /* Color */,
 				4D626DF822B87A820082631D /* Tools */,
-				4D8B05872398A6DF00A9AAAC /* Components */,
 				4DD472BD22AF47AE00AE22F0 /* Views */,
 				4DBFD3CE22B6E36B00A18CB7 /* DataTypes */,
 				4DD472C322AF4AA500AE22F0 /* Extensions */,
@@ -347,17 +402,11 @@
 		4DD472BD22AF47AE00AE22F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4DF18B8F2394635E007F98F1 /* ColorPickerView.swift */,
-				4D21478423AFED0E002B24DD /* CompactView.swift */,
-				4D93894D23AED45100E1F854 /* DrawView.swift */,
-				4D93894F23AED51E00E1F854 /* EffectsView.swift */,
-				4D21478A23B00838002B24DD /* GridView.swift */,
-				4D1BC2CA23AC7EB600BE6DCD /* LayersListView.swift */,
-				4DF18B9323947BB5007F98F1 /* SelectedColorsView.swift */,
-				4D8B05852398A6CE00A9AAAC /* ToolPickerView.swift */,
-				4D704A2423A87AB8004950BF /* TouchInputView.swift */,
-				4D21478623AFEE08002B24DD /* WideView.swift */,
-				4D190F0223A8681200436018 /* ZoomView.swift */,
+				4D8B05872398A6DF00A9AAAC /* Components */,
+				4DCBB6B323B552CF0040BC19 /* Lists */,
+				4DCBB6B223B552C00040BC19 /* InputViews */,
+				4DCBB6B123B552AE0040BC19 /* Layouts */,
+				4DCBB6AE23B54FEE0040BC19 /* Files */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -529,6 +578,7 @@
 			files = (
 				4D613FF623AB331300308151 /* EraserFloodTool.swift in Sources */,
 				4D93894823AE8C0C00E1F854 /* RedoTool.swift in Sources */,
+				4D65620B23B325F000F878E6 /* GridListView.swift in Sources */,
 				4D613FF223AB25DE00308151 /* CircleOutlineTool.swift in Sources */,
 				4DF18B8C23946145007F98F1 /* ColorManager.swift in Sources */,
 				4D626E0422B906360082631D /* RotateTool.swift in Sources */,
@@ -543,6 +593,7 @@
 				4D7F7F9923AB1D8E006771E6 /* EraserTool.swift in Sources */,
 				4D8B05862398A6CE00A9AAAC /* ToolPickerView.swift in Sources */,
 				4DD7986C23A6F98800E95FB0 /* CanvasLayerImageView.swift in Sources */,
+				4DCBB6A923B537870040BC19 /* ViewModifiers.swift in Sources */,
 				4DF18B902394635E007F98F1 /* ColorPickerView.swift in Sources */,
 				4D56BEE923AFD3A200DDFF2F /* MenuManager.swift in Sources */,
 				4DD2865B23A6D54B007D632D /* LayerManager.swift in Sources */,
@@ -573,6 +624,7 @@
 				4D56BEE323AFC00200DDFF2F /* FileManager+Additions.swift in Sources */,
 				4DAA729C2395EB2C004FDAB6 /* PixelColor+Colors.swift in Sources */,
 				4DD4729122AF44F500AE22F0 /* ContentView.swift in Sources */,
+				4DCBB6B023B54FF60040BC19 /* FileView.swift in Sources */,
 				4D93894E23AED45100E1F854 /* DrawView.swift in Sources */,
 				4DAA72A0239616E4004FDAB6 /* ToolManager.swift in Sources */,
 				4DF606D02397653B002EA24C /* AppModel.swift in Sources */,
@@ -755,6 +807,7 @@
 				DEVELOPMENT_TEAM = SC53RX7889;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Pixelyrm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -778,6 +831,7 @@
 				DEVELOPMENT_TEAM = SC53RX7889;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Pixelyrm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

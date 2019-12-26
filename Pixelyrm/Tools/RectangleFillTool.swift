@@ -13,7 +13,7 @@ extension RectangleFillTool: ToolDisplayable {
     static let toolDisplayableImage: UIImage.AssetName = .square
 }
 
-struct RectangleFillTool: ToolProtocol {
+class RectangleFillTool: Tool, ToolProtocol {
     
     let clearOnMoved: Bool = true
     let moveToDrawCanvasOnBegin: Bool = false

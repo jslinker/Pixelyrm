@@ -41,31 +41,27 @@ enum GridViewLayout {
 struct GridView<Content: View> : View {
     
     let maxColumns: Int
-    let verticalPadding: CGFloat
-    let horizontalPadding: CGFloat
     let cellSize: CGSize
+    let cellPadding: CGSize
     let count: Int
     let view: (_ index: Int) -> Content
     
-    // TODO: Swap `verticalPadding` and `horizontalPadding` OR make them a CGSize
-    public init(layout: GridViewLayout, verticalPadding: CGFloat = 4, horizontalPadding: CGFloat = 4, cellSize: CGSize = .init(width: 32, height: 32), count: Int, view: @escaping (_ index: Int) -> Content) {
-        self.maxColumns = layout.numberOfColumns(forColorCount: count, cellSize: cellSize, padding: CGSize(width: horizontalPadding, height: verticalPadding))
-        self.verticalPadding = verticalPadding
-        self.horizontalPadding = horizontalPadding
+    public init(layout: GridViewLayout, cellSize: CGSize = .init(width: 32, height: 32), cellPadding: CGSize = .init(width: 2, height: 2), count: Int, view: @escaping (_ index: Int) -> Content) {
+        self.maxColumns = layout.numberOfColumns(forColorCount: count, cellSize: cellSize, padding: cellPadding)
+        self.cellPadding = cellPadding
         self.cellSize = cellSize
         self.count = count
         self.view = view
     }
     
     private func rowStack() -> some View {
-//        let columns = max(1, floor((sizeSettings.parentSize.width - self.horizontalPadding * 2) / (self.cellSize.width + self.horizontalPadding))) // Must be a non 0 value, size.width is set after initial layout
         let columns = max(1, maxColumns)
         let rows = ceil(CGFloat(self.count) / CGFloat(columns))
         
-        let maxHeight = rows * (self.cellSize.height + self.verticalPadding)
-        let maxWidth = (CGFloat(columns) * (self.cellSize.width + self.horizontalPadding))
+        let maxHeight = rows * (cellSize.height + cellPadding.height)
+        let maxWidth = (CGFloat(columns) * (cellSize.width + cellPadding.width))
         
-        return VStack(alignment: .leading, spacing: self.verticalPadding) {
+        return VStack(alignment: .leading, spacing: cellPadding.height) {
             ForEach(0..<Int(rows), id: \.self) { row in
                 self.columns(row: row, columnsPerRow: columns)
             }
@@ -76,12 +72,12 @@ struct GridView<Content: View> : View {
     private func columns(row: Int, columnsPerRow: Int) -> some View {
         let columns = count - row * columnsPerRow < columnsPerRow ? (count % columnsPerRow) : columnsPerRow
         let rowStartIndex = row * columnsPerRow
-        return HStack(spacing: self.horizontalPadding) {
+        return HStack(spacing: cellPadding.width) {
             ForEach(0..<Int(columns), id: \.self) { column in
                 return self.view(rowStartIndex + column)
                     .frame(width: self.cellSize.width, height: self.cellSize.height)
             }
-            Spacer() // TODO: Remove
+//            Spacer() // TODO: Remove?
         }
     }
     

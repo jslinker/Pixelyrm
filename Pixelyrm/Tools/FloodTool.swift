@@ -13,7 +13,7 @@ extension FloodTool: ToolDisplayable {
     static let toolDisplayableImage: UIImage.AssetName = .circle // TODO: Update
 }
 
-struct FloodTool: ToolProtocol {
+class FloodTool: Tool, ToolProtocol {
     
     let clearOnMoved: Bool = false
     let moveToDrawCanvasOnBegin: Bool = true
