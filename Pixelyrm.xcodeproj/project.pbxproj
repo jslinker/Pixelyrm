@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D087D3E23B7B03900A68C89 /* LayerData+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D087D3D23B7B03900A68C89 /* LayerData+Codable.swift */; };
 		4D190F0323A8681200436018 /* ZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D190F0223A8681200436018 /* ZoomView.swift */; };
 		4D1BC2CB23AC7EB600BE6DCD /* LayersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1BC2CA23AC7EB600BE6DCD /* LayersListView.swift */; };
 		4D21478523AFED0E002B24DD /* CompactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D21478423AFED0E002B24DD /* CompactView.swift */; };
@@ -95,6 +96,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D087D3D23B7B03900A68C89 /* LayerData+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LayerData+Codable.swift"; sourceTree = "<group>"; };
 		4D190F0223A8681200436018 /* ZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomView.swift; sourceTree = "<group>"; };
 		4D1BC2CA23AC7EB600BE6DCD /* LayersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayersListView.swift; sourceTree = "<group>"; };
 		4D21478423AFED0E002B24DD /* CompactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactView.swift; sourceTree = "<group>"; };
@@ -197,6 +199,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D087D3C23B7AFF600A68C89 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				4D087D3D23B7B03900A68C89 /* LayerData+Codable.swift */,
+			);
+			path = Codable;
+			sourceTree = "<group>";
+		};
 		4D4B192223A0A7A8002B78DB /* Effects */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +380,7 @@
 				4DF606CF2397653B002EA24C /* AppModel.swift */,
 				4DD8F77F23A08C3600D7FE18 /* Images.swift */,
 				4DD4729222AF44F700AE22F0 /* Assets.xcassets */,
+				4D087D3C23B7AFF600A68C89 /* Codable */,
 				4DCBB6B623B55A7A0040BC19 /* Symbols */,
 				4DCBB6AB23B537CB0040BC19 /* Modifiers */,
 				4D56BEEA23AFD3A900DDFF2F /* MenuManager */,
@@ -655,6 +666,7 @@
 				4D8B05892398A7D600A9AAAC /* PalettePixel.swift in Sources */,
 				4D56BEE723AFC70000DDFF2F /* FileManager+Images.swift in Sources */,
 				4D626DFE22B9038F0082631D /* PencilTool.swift in Sources */,
+				4D087D3E23B7B03900A68C89 /* LayerData+Codable.swift in Sources */,
 				4DCBB6B523B554540040BC19 /* MenuView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

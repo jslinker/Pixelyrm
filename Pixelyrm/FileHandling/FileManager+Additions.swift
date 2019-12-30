@@ -14,22 +14,16 @@ extension FileManager {
         return fileExists(atPath: url.path)
     }
     
-    @discardableResult func createFolder(atURL url: URL) throws -> Bool {
-        let url = try url.urlExcludedFromBackup()
-        return createFolder(atPath: url.path)
+    func createFolder(atURL url: URL) throws {
+        try createFolder(atPath: url.path)
+        // TODO: Is the url used earlier excluded from backup?
+        _ = try url.urlExcludedFromBackup() // TODO: Update this to exclude without returning anything
     }
     
-    private func createFolder(atPath path: String) -> Bool {
+    private func createFolder(atPath path: String) throws {
         let manager = FileManager.default
-        guard !manager.fileExists(atPath: path) else { return true } // Already exists
-        do {
-            try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
-        } catch {
-            print("Failed to create folder at path: \(path) - Error: \(error.localizedDescription)");
-            return false
-        }
-        
-        return true
+        guard !manager.fileExists(atPath: path) else { return } // Already exists
+        try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
     }
     
     public func removeFile(atURL url: URL) -> Bool {

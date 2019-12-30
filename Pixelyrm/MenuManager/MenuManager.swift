@@ -12,6 +12,8 @@ import SwiftUI
 
 public class MenuManager: ObservableObject {
     
+    weak var appModel: AppModel?
+    
     public enum Action {
         case save
         case load
@@ -44,12 +46,34 @@ public class MenuManager: ObservableObject {
         }
     }
     
+    // TODO: Update this
+    let tempURL: URL = URL.documentsURL.appendingPathComponent("files", isDirectory: true)
+    var tempFile: URL { tempURL.appendingPathComponent("test.hi", isDirectory: false) }
+    
     private func save() {
-        print("Save")
+        guard let appModel = appModel else { return }
+        do {
+            let data = try JSONEncoder().encode(appModel.layerManager.makeLayerManagerData())
+            print("data! \(data)")
+            try FileManager.default.createFolder(atURL: tempURL)
+            try data.write(to: tempFile)
+            print("Save")
+        } catch {
+            print("Failed to save `LayerManager`: \(error.localizedDescription)")
+        }
     }
     
     private func load() {
-        print("Load")
+        guard let appModel = appModel else { return }
+        do {
+            let data = try Data(contentsOf: tempFile)
+            let layerManagerData = try JSONDecoder().decode(LayerManagerData.self, from: data)
+            appModel.layerManager.configure(with: layerManagerData) // TODO: Handle this better
+            print("Load")
+            appModel.historyManager.clearHistory()
+        } catch {
+            print("Failed to load `LayerManager`: \(error.localizedDescription)")
+        }
     }
     
 }

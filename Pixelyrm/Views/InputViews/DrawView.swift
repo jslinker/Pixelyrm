@@ -14,14 +14,16 @@ struct DrawView: View {
     @EnvironmentObject var layerManager: LayerManager
     
     var body: some View {
-        ZoomView {
-            ZStack {
-                ForEach(self.layerManager.layers) { layer in
-                    CanvasLayerView(canvasLayer: layer)
+        VStack {
+            ZoomView {
+                ZStack {
+                    ForEach(self.layerManager.layers) { layer in
+                        CanvasLayerView(canvasLayer: layer)
+                    }
+                    TouchInputView(inputViewHandler: self.drawManager)
                 }
-                TouchInputView(inputViewHandler: self.drawManager)
+                .edgesIgnoringSafeArea(.all)
             }
-            .edgesIgnoringSafeArea(.all)
         }
         .edgesIgnoringSafeArea(.all)
     }

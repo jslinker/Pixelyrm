@@ -49,8 +49,10 @@ public class AppModel: ObservableObject {
         }
         
         activeLayerChangeHandler = layerManager.objectWillChange
+            .throttle(for: 0.0, scheduler: RunLoop.main, latest: true) // Prevents the sink from being triggered multiple times from `objectWillChange` sends in the same cycle
             .receive(on: RunLoop.main)
             .sink { [weak self] in
+                print("activeLayerChangeHandler()")
                 guard let myself = self else { return }
                 myself.drawManager.activeCanvasLayer = myself.layerManager.activeCanvasLayer
         }
@@ -59,7 +61,12 @@ public class AppModel: ObservableObject {
             // Using `DispatchQueue.main.async` to fix an issue where the color isn't set for the mac catalyst app
             self.colorManager.primaryColor = self.colorPalette.colors.first ?? .black
         }
+        
+        menuManager.appModel = self // TODO: Handle this better
     }
+    
+//    func updateLayerManagerChangeHandler() {
+//    }
     
 }
 
