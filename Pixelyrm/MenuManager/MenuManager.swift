@@ -14,9 +14,13 @@ public class MenuManager: ObservableObject {
     
     weak var appModel: AppModel?
     
-    public enum Action {
+    public enum Action: String, Identifiable {
         case save
         case load
+        
+        public var id: String {
+            rawValue
+        }
         
         public var name: String {
             switch self {
@@ -46,18 +50,16 @@ public class MenuManager: ObservableObject {
         }
     }
     
-    // TODO: Update this
+    // TODO: Move/Update this
     let tempURL: URL = URL.documentsURL.appendingPathComponent("files", isDirectory: true)
     var tempFile: URL { tempURL.appendingPathComponent("test.hi", isDirectory: false) }
     
     private func save() {
         guard let appModel = appModel else { return }
         do {
-            let data = try JSONEncoder().encode(appModel.layerManager.makeLayerManagerData())
-            print("data! \(data)")
+            let data = try JSONEncoder().encode(appModel.layerManager)
             try FileManager.default.createFolder(atURL: tempURL)
             try data.write(to: tempFile)
-            print("Save")
         } catch {
             print("Failed to save `LayerManager`: \(error.localizedDescription)")
         }
@@ -67,9 +69,8 @@ public class MenuManager: ObservableObject {
         guard let appModel = appModel else { return }
         do {
             let data = try Data(contentsOf: tempFile)
-            let layerManagerData = try JSONDecoder().decode(LayerManagerData.self, from: data)
-            appModel.layerManager.configure(with: layerManagerData) // TODO: Handle this better
-            print("Load")
+            let layerManager = try JSONDecoder().decode(LayerManager.self, from: data)
+            appModel.layerManager = layerManager
             appModel.historyManager.clearHistory()
         } catch {
             print("Failed to load `LayerManager`: \(error.localizedDescription)")

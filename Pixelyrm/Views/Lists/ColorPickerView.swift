@@ -22,7 +22,7 @@ struct ColorPickerView : View {
     }
     
     var body: some View {
-        GridListView(items: colorPalette.colors,
+        return GridListView(items: colorPalette.colors,
                      layout: layout,
                      cellSize: cellSize,
                      cellForItem: { pixelColor, _ in

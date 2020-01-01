@@ -21,13 +21,13 @@ struct LayersListView : View {
     }
     
     var body: some View {
-        GridListView(items: layerManager.layers,
+        return GridListView(items: layerManager.layers,
                      layout: layout,
                      cellSize: cellSize,
                      cellForItem: { layer, _ in
                         CanvasLayerView(canvasLayer: layer, showsBorder: true, selected: self.layerManager.activeCanvasLayer == layer)
         }, didSelect: { layer, _ in
-            self.layerManager.activeCanvasLayer = layer
+            self.layerManager.updateActiveCanvas(layer: layer)
         })
     }
     
