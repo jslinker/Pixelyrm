@@ -75,7 +75,6 @@ public class AppModel: ObservableObject {
             .throttle(for: 0.0, scheduler: RunLoop.main, latest: true) // Prevents the sink from being triggered multiple times from `objectWillChange` sends in the same cycle
             .receive(on: RunLoop.main)
             .sink { [weak self] in
-                print("activeLayerChangeHandler()")
                 guard let myself = self else { return }
                 myself.drawManager.activeCanvasLayer = myself.layerManager.activeCanvasLayer
         }
