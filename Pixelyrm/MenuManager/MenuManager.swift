@@ -12,9 +12,15 @@ import SwiftUI
 
 public class MenuManager: ObservableObject {
     
-    public enum Action {
+    weak var appModel: AppModel?
+    
+    public enum Action: String, Identifiable {
         case save
         case load
+        
+        public var id: String {
+            rawValue
+        }
         
         public var name: String {
             switch self {
@@ -44,12 +50,31 @@ public class MenuManager: ObservableObject {
         }
     }
     
+    // TODO: Move/Update this
+    let tempURL: URL = URL.documentsURL.appendingPathComponent("files", isDirectory: true)
+    var tempFile: URL { tempURL.appendingPathComponent("test.hi", isDirectory: false) }
+    
     private func save() {
-        print("Save")
+        guard let appModel = appModel else { return }
+        do {
+            let data = try JSONEncoder().encode(appModel.layerManager)
+            try FileManager.default.createFolder(atURL: tempURL)
+            try data.write(to: tempFile)
+        } catch {
+            print("Failed to save `LayerManager`: \(error.localizedDescription)")
+        }
     }
     
     private func load() {
-        print("Load")
+        guard let appModel = appModel else { return }
+        do {
+            let data = try Data(contentsOf: tempFile)
+            let layerManager = try JSONDecoder().decode(LayerManager.self, from: data)
+            appModel.layerManager = layerManager
+            appModel.historyManager.clearHistory()
+        } catch {
+            print("Failed to load `LayerManager`: \(error.localizedDescription)")
+        }
     }
     
 }

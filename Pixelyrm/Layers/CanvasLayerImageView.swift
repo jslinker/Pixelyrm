@@ -43,17 +43,6 @@ struct CanvasLayerView: View {
         return nil
     }
     
-    private func canvasView() -> some View {
-        ZStack {
-            Image(uiImage: canvasLayer.layer.image)
-                .resizable()
-                .interpolation(.none)
-                .renderingMode(.original)
-                .opacity(canvasLayer.layer.isHidden ? 0 : 1)
-            drawView(layer: self.canvasLayer.drawLayer)
-        }
-    }
-    
     // TODO: Find a better way to do this
     private struct Border: ViewModifier {
         let show: Bool

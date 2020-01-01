@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public struct IntSize {
+public struct IntSize: Codable {
     let width: Int
     let height: Int
     

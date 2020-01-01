@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct GridListView<Item: Any, Content: View> : View {
+struct GridListView<Item: Any & Identifiable, Content: View> : View {
     
     typealias CellClosure = (_ item: Item, _ index: Int) -> Content
     typealias DidSelectClosure = ((_ item: Item, _ index: Int) -> Void)?
@@ -30,11 +30,11 @@ struct GridListView<Item: Any, Content: View> : View {
     var body: some View {
         GridView(layout: layout,
                  cellSize: cellSize,
-                 count: items.count) { index -> Button<Content> in
+                 items: items) { item, index -> Button<Content> in
                     Button(action: {
-                        self.didSelect?(self.items[index], index)
+                        self.didSelect?(item, index)
                     }) {
-                        self.cell(self.items[index], index)
+                        self.cell(item, index)
                     }
         }
     }

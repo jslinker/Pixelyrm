@@ -25,4 +25,9 @@ public class HistoryManager: ObservableObject {
         undoManager.registerUndo(withTarget: target, handler: handler)
     }
     
+    public func clearHistory() {
+        // TODO: Make the undo/redo buttons look enabled/disabled as needed
+        undoManager.removeAllActions()
+    }
+    
 }

@@ -10,6 +10,8 @@ import SwiftUI
 
 struct CompactView : View {
     
+    @EnvironmentObject var appModel: AppModel
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
@@ -18,11 +20,13 @@ struct CompactView : View {
                         .padding(2)
                 }
                 ScrollView(.horizontal, showsIndicators: false) {
-                    // TODO: Fix an issue where when there is 1 layer when scrolling left it won't snap back to it's original position
+                    // TODO: Fix an issue where when there is 1 layer when scrolling left it won't snap back to its original position
                     LayersListView(layout: .wrapToNextLine(proxy: geometry, maxRows: 1), cellSize: CGSize(width: 44, height: 44))
+                        .environmentObject(self.appModel.layerManager)
                         .padding(.horizontal, 2)
                 }
                 DrawView()
+                    .environmentObject(self.appModel.layerManager)
                     .background(Color.init(red: 0.1, green: 0.1, blue: 0.1).edgesIgnoringSafeArea(.all)) // TODO: Make a color theme
                 VStack(spacing: 0) {
                     ScrollView(.horizontal, showsIndicators: false) {

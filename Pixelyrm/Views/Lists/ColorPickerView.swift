@@ -22,13 +22,14 @@ struct ColorPickerView : View {
     }
     
     var body: some View {
-        GridListView(items: colorPalette.colors,
+        return GridListView(items: colorPalette.colors,
                      layout: layout,
                      cellSize: cellSize,
                      cellForItem: { pixelColor, _ in
                         PalettePixel(fillColor: pixelColor.color,
-                        strokeColor: self.colorManager.primaryColor == pixelColor ? .black : pixelColor.darkerPixel().color,
+                                     strokeColor: self.colorManager.primaryColor == pixelColor ? .black : pixelColor.darkerPixel().color,
                         lineWidth: self.colorManager.primaryColor == pixelColor ? 4 : 2)
+                            .padding(self.colorManager.primaryColor == pixelColor ? 0 : 4)
         }, didSelect: { color, _ in
             self.colorManager.primaryColor = color
         })
