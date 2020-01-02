@@ -22,7 +22,7 @@ struct LayersListView : View {
     
     var body: some View {
         VStack(spacing: 0) {
-            ForEach(frameManager.layeredCanvases) { layeredCanvas in
+            ForEach(frameManager.layeredCanvases.reversed()) { layeredCanvas in
                 return GridListView(items: layeredCanvas.layers,
                                     layout: self.layout,
                                     cellSize: self.cellSize,

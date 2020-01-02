@@ -54,7 +54,7 @@
 		4DCBB6B523B554540040BC19 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCBB6B423B554540040BC19 /* MenuView.swift */; };
 		4DCBB6B823B55A840040BC19 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCBB6B723B55A840040BC19 /* SFSymbol.swift */; };
 		4DCBB6BA23B573F80040BC19 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCBB6B923B573F80040BC19 /* Document.swift */; };
-		4DD2865B23A6D54B007D632D /* LayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2865A23A6D54B007D632D /* LayerManager.swift */; };
+		4DD2865B23A6D54B007D632D /* LayeredCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2865A23A6D54B007D632D /* LayeredCanvas.swift */; };
 		4DD4728D22AF44F500AE22F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4728C22AF44F500AE22F0 /* AppDelegate.swift */; };
 		4DD4728F22AF44F500AE22F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4728E22AF44F500AE22F0 /* SceneDelegate.swift */; };
 		4DD4729122AF44F500AE22F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4729022AF44F500AE22F0 /* ContentView.swift */; };
@@ -144,7 +144,7 @@
 		4DCBB6B423B554540040BC19 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		4DCBB6B723B55A840040BC19 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
 		4DCBB6B923B573F80040BC19 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		4DD2865A23A6D54B007D632D /* LayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerManager.swift; sourceTree = "<group>"; };
+		4DD2865A23A6D54B007D632D /* LayeredCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayeredCanvas.swift; sourceTree = "<group>"; };
 		4DD4728922AF44F500AE22F0 /* Pixelyrm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pixelyrm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD4728C22AF44F500AE22F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DD4728E22AF44F500AE22F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -336,11 +336,11 @@
 		4DD2865923A6D543007D632D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				4DD7986923A6F76300E95FB0 /* LayerData.swift */,
 				4D7F7F9623AAE634006771E6 /* CanvasLayer.swift */,
 				4DD7986B23A6F98800E95FB0 /* CanvasLayerImageView.swift */,
-				4DD2865A23A6D54B007D632D /* LayerManager.swift */,
 				4D8212D123BD653B00EBD281 /* FrameManager.swift */,
+				4DD7986923A6F76300E95FB0 /* LayerData.swift */,
+				4DD2865A23A6D54B007D632D /* LayeredCanvas.swift */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -628,7 +628,7 @@
 				4DCBB6A923B537870040BC19 /* ViewModifiers.swift in Sources */,
 				4DF18B902394635E007F98F1 /* ColorPickerView.swift in Sources */,
 				4D56BEE923AFD3A200DDFF2F /* MenuManager.swift in Sources */,
-				4DD2865B23A6D54B007D632D /* LayerManager.swift in Sources */,
+				4DD2865B23A6D54B007D632D /* LayeredCanvas.swift in Sources */,
 				4D21478723AFEE08002B24DD /* WideView.swift in Sources */,
 				4D56BEE523AFC0F200DDFF2F /* URL+Additions.swift in Sources */,
 				4D626E0022B9039D0082631D /* LineTool.swift in Sources */,

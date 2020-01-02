@@ -18,24 +18,14 @@ public class AppModel: ObservableObject {
     let menuManager: MenuManager
     let toolManager: ToolManager
     
-    // TODO: Update LayerManager to handle frames and make private
-    private var layerManager: LayerManager {
-        willSet {
-            objectWillChange.send()
-            layerManager.prepareForNewLayerManager()
-        }
-        didSet {
-            updateLayerManagerChangeHandler()
-        }
-    }
-    
+    // TODO: Make private
     var frameManager: FrameManager {
         willSet {
             objectWillChange.send()
             frameManager.prepareForNewFrameManager()
         }
         didSet {
-            updateLayerManagerChangeHandler()
+            updateFrameManagerChangeHandler()
         }
     }
     
@@ -50,7 +40,6 @@ public class AppModel: ObservableObject {
         effectManager = EffectManager()
         frameManager = FrameManager()
         historyManager = HistoryManager()
-        layerManager = LayerManager()
         menuManager = MenuManager()
         toolManager = ToolManager(historyManager: historyManager)
         
@@ -69,7 +58,7 @@ public class AppModel: ObservableObject {
                 myself.drawManager.color = myself.colorManager.primaryColor
         }
         
-        updateLayerManagerChangeHandler()
+        updateFrameManagerChangeHandler()
         
         DispatchQueue.main.async {
             // Using `DispatchQueue.main.async` to fix an issue where the color isn't set for the mac catalyst app
@@ -79,8 +68,9 @@ public class AppModel: ObservableObject {
         menuManager.appModel = self // TODO: Handle this better
     }
     
-    private func updateLayerManagerChangeHandler() {
+    private func updateFrameManagerChangeHandler() {
         drawManager.activeCanvasLayer = frameManager.activeCanvasLayer
+        frameManager.historyManager = historyManager
         activeLayerChangeHandler = frameManager.objectWillChange
             .throttle(for: 0.0, scheduler: RunLoop.main, latest: true) // Prevents the sink from being triggered multiple times from `objectWillChange` sends in the same cycle
             .receive(on: RunLoop.main)
@@ -92,7 +82,7 @@ public class AppModel: ObservableObject {
     
 }
 
-// Tools
+// MARK: - Tools
 
 extension AppModel {
     

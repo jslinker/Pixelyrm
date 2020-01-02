@@ -11,6 +11,11 @@ import SwiftUI
 struct CompactView : View {
     
     @EnvironmentObject var frameManager: FrameManager
+    private let layerCellPadding: CGFloat = 2
+    private let layerCellSize: CGFloat = 30
+    private var maxLayersHeight: CGFloat {
+        (layerCellSize + layerCellPadding) * 3 + 2 // + 2 to show part of the cell that's outside of the view
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -26,13 +31,13 @@ struct CompactView : View {
                     ScrollView(.vertical, showsIndicators: false) {
                         ScrollView(.horizontal, showsIndicators: false) {
                             // TODO: Fix an issue where when there is 1 layer when scrolling left it won't snap back to its original position
-                            LayersListView(layout: .wrapToNextLine(proxy: geometry, maxRows: 1), cellSize: CGSize(width: 32, height: 32))
+                            LayersListView(layout: .wrapToNextLine(proxy: geometry, maxRows: 1), cellSize: CGSize(width: self.layerCellSize, height: self.layerCellSize))
 //                                .environmentObject(self.appModel.frameManager)
-                                .padding(.horizontal, 2)
+                                .padding(.horizontal, self.layerCellPadding)
                         }
-                        .frame(height: CGFloat(self.frameManager.layeredCanvases.count * 34)) // TODO: How does maxHeight work? Doesn't seem to do what I expect it to do.
+                            .frame(height: CGFloat(self.frameManager.layeredCanvases.count) * (self.layerCellSize + self.layerCellPadding)) // TODO: How does maxHeight work? Doesn't seem to do what I expect it to do.
                     }
-                        .frame(height: min(104, CGFloat(self.frameManager.layeredCanvases.count * 34))) // TODO: How does maxHeight work? Doesn't seem to do what I expect it to do.
+                        .frame(height: min(self.maxLayersHeight, CGFloat(self.frameManager.layeredCanvases.count) * (self.layerCellSize + self.layerCellPadding))) // TODO: How does maxHeight work? Doesn't seem to do what I expect it to do.
                     ScrollView(.horizontal, showsIndicators: false) {
                         ColorPickerView(layout: .wrapToNextLine(proxy: geometry, maxRows: 2), cellSize: .init(width: 32, height: 32))
                             .padding(.horizontal, 2)

@@ -71,26 +71,26 @@ public class MenuManager: ObservableObject {
     var tempFile: URL { tempURL.appendingPathComponent("test.hi", isDirectory: false) }
     
     private func save() {
-//        guard let appModel = appModel else { return }
-//        do {
-//            let data = try JSONEncoder().encode(appModel.layerManager)
-//            try FileManager.default.createFolder(atURL: tempURL)
-//            try data.write(to: tempFile)
-//        } catch {
-//            print("Failed to save `LayerManager`: \(error.localizedDescription)")
-//        }
+        guard let appModel = appModel else { return }
+        do {
+            let data = try JSONEncoder().encode(appModel.frameManager)
+            try FileManager.default.createFolder(atURL: tempURL)
+            try data.write(to: tempFile)
+        } catch {
+            print("Failed to save `FrameManager`: \(error.localizedDescription)")
+        }
     }
     
     private func load() {
-//        guard let appModel = appModel else { return }
-//        do {
-//            let data = try Data(contentsOf: tempFile)
-//            let layerManager = try JSONDecoder().decode(LayerManager.self, from: data)
-//            appModel.layerManager = layerManager
-//            appModel.historyManager.clearHistory()
-//        } catch {
-//            print("Failed to load `LayerManager`: \(error.localizedDescription)")
-//        }
+        guard let appModel = appModel else { return }
+        do {
+            let data = try Data(contentsOf: tempFile)
+            let frameManager = try JSONDecoder().decode(FrameManager.self, from: data)
+            appModel.frameManager = frameManager
+            appModel.historyManager.clearHistory()
+        } catch {
+            print("Failed to load `LayerManager`: \(error.localizedDescription)")
+        }
     }
     
 }
