@@ -19,10 +19,20 @@ public class AppModel: ObservableObject {
     let toolManager: ToolManager
     
     // TODO: Update LayerManager to handle frames and make private
-    var layerManager: LayerManager {
+    private var layerManager: LayerManager {
         willSet {
             objectWillChange.send()
             layerManager.prepareForNewLayerManager()
+        }
+        didSet {
+            updateLayerManagerChangeHandler()
+        }
+    }
+    
+    var frameManager: FrameManager {
+        willSet {
+            objectWillChange.send()
+            frameManager.prepareForNewFrameManager()
         }
         didSet {
             updateLayerManagerChangeHandler()
@@ -36,15 +46,15 @@ public class AppModel: ObservableObject {
     @Published var colorPalette: ColorPalette = ColorPalette()
     
     public init() {
-        let layerManager = LayerManager()
         colorManager = ColorManager()
         effectManager = EffectManager()
+        frameManager = FrameManager()
         historyManager = HistoryManager()
-        self.layerManager = layerManager
+        layerManager = LayerManager()
         menuManager = MenuManager()
         toolManager = ToolManager(historyManager: historyManager)
         
-        drawManager = DrawManager(historyManager: historyManager, activeLayer: layerManager.activeCanvasLayer, tool: toolManager.activeTool, color: colorManager.primaryColor)
+        drawManager = DrawManager(historyManager: historyManager, activeLayer: frameManager.activeCanvasLayer, tool: toolManager.activeTool, color: colorManager.primaryColor)
         
         // TODO: Update to use objectWillChange?
         toolChangedHandler = self.toolChanged { [weak self] tool in
@@ -70,13 +80,13 @@ public class AppModel: ObservableObject {
     }
     
     private func updateLayerManagerChangeHandler() {
-        drawManager.activeCanvasLayer = layerManager.activeCanvasLayer
-        activeLayerChangeHandler = layerManager.objectWillChange
+        drawManager.activeCanvasLayer = frameManager.activeCanvasLayer
+        activeLayerChangeHandler = frameManager.objectWillChange
             .throttle(for: 0.0, scheduler: RunLoop.main, latest: true) // Prevents the sink from being triggered multiple times from `objectWillChange` sends in the same cycle
             .receive(on: RunLoop.main)
             .sink { [weak self] in
                 guard let myself = self else { return }
-                myself.drawManager.activeCanvasLayer = myself.layerManager.activeCanvasLayer
+                myself.drawManager.activeCanvasLayer = myself.frameManager.activeCanvasLayer
         }
     }
     

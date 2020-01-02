@@ -12,12 +12,12 @@ import UIKit
 
 public struct ZoomView<Content: View>: UIViewControllerRepresentable {
     
-    @EnvironmentObject var layerManager: LayerManager
+    @EnvironmentObject var frameManager: FrameManager
     
     public let content: () -> Content
     
     public func makeUIViewController(context: Context) -> UIScrollViewController<Content> {
-        let scrollViewController = UIScrollViewController(rootView: self.content(), contentSize: layerManager.size.cgSize)
+        let scrollViewController = UIScrollViewController(rootView: self.content(), contentSize: frameManager.size.cgSize)
         return scrollViewController
     }
     

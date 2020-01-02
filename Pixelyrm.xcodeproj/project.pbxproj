@@ -35,6 +35,7 @@
 		4D7F387A22B08D6000D9B606 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F387922B08D6000D9B606 /* String+Additions.swift */; };
 		4D7F7F9723AAE634006771E6 /* CanvasLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F7F9623AAE634006771E6 /* CanvasLayer.swift */; };
 		4D7F7F9923AB1D8E006771E6 /* EraserTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F7F9823AB1D8E006771E6 /* EraserTool.swift */; };
+		4D8212D223BD653B00EBD281 /* FrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8212D123BD653B00EBD281 /* FrameManager.swift */; };
 		4D8B05862398A6CE00A9AAAC /* ToolPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B05852398A6CE00A9AAAC /* ToolPickerView.swift */; };
 		4D8B05892398A7D600A9AAAC /* PalettePixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B05882398A7D600A9AAAC /* PalettePixel.swift */; };
 		4D93894423AE885400E1F854 /* HistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D93894323AE885400E1F854 /* HistoryManager.swift */; };
@@ -124,6 +125,7 @@
 		4D7F387922B08D6000D9B606 /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		4D7F7F9623AAE634006771E6 /* CanvasLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasLayer.swift; sourceTree = "<group>"; };
 		4D7F7F9823AB1D8E006771E6 /* EraserTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EraserTool.swift; sourceTree = "<group>"; };
+		4D8212D123BD653B00EBD281 /* FrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameManager.swift; sourceTree = "<group>"; };
 		4D8B05852398A6CE00A9AAAC /* ToolPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolPickerView.swift; sourceTree = "<group>"; };
 		4D8B05882398A7D600A9AAAC /* PalettePixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettePixel.swift; sourceTree = "<group>"; };
 		4D93894323AE885400E1F854 /* HistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryManager.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				4D7F7F9623AAE634006771E6 /* CanvasLayer.swift */,
 				4DD7986B23A6F98800E95FB0 /* CanvasLayerImageView.swift */,
 				4DD2865A23A6D54B007D632D /* LayerManager.swift */,
+				4D8212D123BD653B00EBD281 /* FrameManager.swift */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 				4DAA72A0239616E4004FDAB6 /* ToolManager.swift in Sources */,
 				4DF606D02397653B002EA24C /* AppModel.swift in Sources */,
 				4D4B192423A0A7B3002B78DB /* EffectManager.swift in Sources */,
+				4D8212D223BD653B00EBD281 /* FrameManager.swift in Sources */,
 				4DEDD80523A9B7690028F0CF /* Array+PixelColor.swift in Sources */,
 				4DBFD3C922B6D6CF00A18CB7 /* IntPoint.swift in Sources */,
 				4D626E0622B906DB0082631D /* TransformTool.swift in Sources */,

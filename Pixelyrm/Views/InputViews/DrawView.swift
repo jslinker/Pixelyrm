@@ -11,13 +11,13 @@ import SwiftUI
 struct DrawView: View {
     
     @EnvironmentObject var drawManager: DrawManager
-    @EnvironmentObject var layerManager: LayerManager
+    @EnvironmentObject var frameManager: FrameManager
     
     var body: some View {
         VStack {
             ZoomView {
                 ZStack {
-                    ForEach(self.layerManager.layers) { layer in
+                    ForEach(self.frameManager.activeCanvasLayers) { layer in
                         CanvasLayerView(canvasLayer: layer)
                     }
                     TouchInputView(inputViewHandler: self.drawManager)

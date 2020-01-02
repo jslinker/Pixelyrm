@@ -24,6 +24,10 @@ public enum SFSymbol: String {
     // Menu
     case save = "arrow.down.doc"
     case load = "arrow.up.doc"
+    case addLayer = "square.stack.3d.up"
+    case removeLayer = "square.stack.3d.up.slash"
+    case addFrame = "plus.rectangle"
+    case removeFrame = "minus.rectangle"
     
     // Tools
     case circle = "circle"
