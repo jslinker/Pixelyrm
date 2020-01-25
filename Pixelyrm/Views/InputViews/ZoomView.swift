@@ -27,6 +27,7 @@ public struct ZoomView<Content: View>: UIViewControllerRepresentable {
     
 }
 
+// TODO: Mouse scrolling doesn't work on Mac Catalyst, update to make this work
 public class UIScrollViewController<Content: View>: UIViewController, UIScrollViewDelegate {
     
     lazy var scrollView: UIScrollView = {
