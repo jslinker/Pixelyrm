@@ -17,6 +17,10 @@ public class MenuManager: ObservableObject {
     public enum Action: String, Identifiable {
         case save
         case load
+        case addLayer
+        case removeLayer
+        case addFrame
+        case removeFrame
         
         public var id: String {
             rawValue
@@ -26,6 +30,10 @@ public class MenuManager: ObservableObject {
             switch self {
                 case .save: return NSLocalizedString("Save", comment: "Title for saving the project")
                 case .load: return NSLocalizedString("Load", comment: "Title for loading a project")
+                case .addLayer: return NSLocalizedString("Add Layer", comment: "Title for adding a layer")
+                case .removeLayer: return NSLocalizedString("Remove Layer", comment: "Title for removing a layer")
+                case .addFrame: return NSLocalizedString("Add Frame", comment: "Title for adding a frame")
+                case .removeFrame: return NSLocalizedString("Remove Frame", comment: "Title for removing a frame")
             }
         }
         
@@ -33,6 +41,10 @@ public class MenuManager: ObservableObject {
             switch self {
             case .save: return .symbol(.save)
             case .load: return .symbol(.load)
+            case .addLayer: return .symbol(.addLayer)
+            case .removeLayer: return .symbol(.removeLayer)
+            case .addFrame: return .symbol(.addFrame)
+            case .removeFrame: return .symbol(.removeFrame)
             }
         }
     }
@@ -40,13 +52,17 @@ public class MenuManager: ObservableObject {
     @Published public private(set) var actions: [Action]
     
     public init() {
-        actions = [.save, .load]
+        actions = [.save, .load, .removeLayer, .addLayer, .removeFrame, .addFrame]
     }
     
     public func perform(action: Action) {
         switch action {
         case .save: save()
         case .load: load()
+        case .addLayer: appModel?.frameManager.addLayer()
+        case .removeLayer: break // TODO: Handle
+        case .addFrame: appModel?.frameManager.addFrame() // TODO: Handle
+        case .removeFrame: break // TODO: Handle
         }
     }
     
@@ -57,11 +73,11 @@ public class MenuManager: ObservableObject {
     private func save() {
         guard let appModel = appModel else { return }
         do {
-            let data = try JSONEncoder().encode(appModel.layerManager)
+            let data = try JSONEncoder().encode(appModel.frameManager)
             try FileManager.default.createFolder(atURL: tempURL)
             try data.write(to: tempFile)
         } catch {
-            print("Failed to save `LayerManager`: \(error.localizedDescription)")
+            print("Failed to save `FrameManager`: \(error.localizedDescription)")
         }
     }
     
@@ -69,8 +85,8 @@ public class MenuManager: ObservableObject {
         guard let appModel = appModel else { return }
         do {
             let data = try Data(contentsOf: tempFile)
-            let layerManager = try JSONDecoder().decode(LayerManager.self, from: data)
-            appModel.layerManager = layerManager
+            let frameManager = try JSONDecoder().decode(FrameManager.self, from: data)
+            appModel.frameManager = frameManager
             appModel.historyManager.clearHistory()
         } catch {
             print("Failed to load `LayerManager`: \(error.localizedDescription)")

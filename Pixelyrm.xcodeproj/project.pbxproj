@@ -35,6 +35,7 @@
 		4D7F387A22B08D6000D9B606 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F387922B08D6000D9B606 /* String+Additions.swift */; };
 		4D7F7F9723AAE634006771E6 /* CanvasLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F7F9623AAE634006771E6 /* CanvasLayer.swift */; };
 		4D7F7F9923AB1D8E006771E6 /* EraserTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7F7F9823AB1D8E006771E6 /* EraserTool.swift */; };
+		4D8212D223BD653B00EBD281 /* FrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8212D123BD653B00EBD281 /* FrameManager.swift */; };
 		4D8B05862398A6CE00A9AAAC /* ToolPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B05852398A6CE00A9AAAC /* ToolPickerView.swift */; };
 		4D8B05892398A7D600A9AAAC /* PalettePixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8B05882398A7D600A9AAAC /* PalettePixel.swift */; };
 		4D93894423AE885400E1F854 /* HistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D93894323AE885400E1F854 /* HistoryManager.swift */; };
@@ -53,7 +54,7 @@
 		4DCBB6B523B554540040BC19 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCBB6B423B554540040BC19 /* MenuView.swift */; };
 		4DCBB6B823B55A840040BC19 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCBB6B723B55A840040BC19 /* SFSymbol.swift */; };
 		4DCBB6BA23B573F80040BC19 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCBB6B923B573F80040BC19 /* Document.swift */; };
-		4DD2865B23A6D54B007D632D /* LayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2865A23A6D54B007D632D /* LayerManager.swift */; };
+		4DD2865B23A6D54B007D632D /* LayeredCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2865A23A6D54B007D632D /* LayeredCanvas.swift */; };
 		4DD4728D22AF44F500AE22F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4728C22AF44F500AE22F0 /* AppDelegate.swift */; };
 		4DD4728F22AF44F500AE22F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4728E22AF44F500AE22F0 /* SceneDelegate.swift */; };
 		4DD4729122AF44F500AE22F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4729022AF44F500AE22F0 /* ContentView.swift */; };
@@ -124,6 +125,7 @@
 		4D7F387922B08D6000D9B606 /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		4D7F7F9623AAE634006771E6 /* CanvasLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasLayer.swift; sourceTree = "<group>"; };
 		4D7F7F9823AB1D8E006771E6 /* EraserTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EraserTool.swift; sourceTree = "<group>"; };
+		4D8212D123BD653B00EBD281 /* FrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameManager.swift; sourceTree = "<group>"; };
 		4D8B05852398A6CE00A9AAAC /* ToolPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolPickerView.swift; sourceTree = "<group>"; };
 		4D8B05882398A7D600A9AAAC /* PalettePixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettePixel.swift; sourceTree = "<group>"; };
 		4D93894323AE885400E1F854 /* HistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryManager.swift; sourceTree = "<group>"; };
@@ -142,7 +144,7 @@
 		4DCBB6B423B554540040BC19 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		4DCBB6B723B55A840040BC19 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
 		4DCBB6B923B573F80040BC19 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		4DD2865A23A6D54B007D632D /* LayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerManager.swift; sourceTree = "<group>"; };
+		4DD2865A23A6D54B007D632D /* LayeredCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayeredCanvas.swift; sourceTree = "<group>"; };
 		4DD4728922AF44F500AE22F0 /* Pixelyrm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pixelyrm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD4728C22AF44F500AE22F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DD4728E22AF44F500AE22F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -334,10 +336,11 @@
 		4DD2865923A6D543007D632D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				4DD7986923A6F76300E95FB0 /* LayerData.swift */,
 				4D7F7F9623AAE634006771E6 /* CanvasLayer.swift */,
 				4DD7986B23A6F98800E95FB0 /* CanvasLayerImageView.swift */,
-				4DD2865A23A6D54B007D632D /* LayerManager.swift */,
+				4D8212D123BD653B00EBD281 /* FrameManager.swift */,
+				4DD7986923A6F76300E95FB0 /* LayerData.swift */,
+				4DD2865A23A6D54B007D632D /* LayeredCanvas.swift */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -625,7 +628,7 @@
 				4DCBB6A923B537870040BC19 /* ViewModifiers.swift in Sources */,
 				4DF18B902394635E007F98F1 /* ColorPickerView.swift in Sources */,
 				4D56BEE923AFD3A200DDFF2F /* MenuManager.swift in Sources */,
-				4DD2865B23A6D54B007D632D /* LayerManager.swift in Sources */,
+				4DD2865B23A6D54B007D632D /* LayeredCanvas.swift in Sources */,
 				4D21478723AFEE08002B24DD /* WideView.swift in Sources */,
 				4D56BEE523AFC0F200DDFF2F /* URL+Additions.swift in Sources */,
 				4D626E0022B9039D0082631D /* LineTool.swift in Sources */,
@@ -659,6 +662,7 @@
 				4DAA72A0239616E4004FDAB6 /* ToolManager.swift in Sources */,
 				4DF606D02397653B002EA24C /* AppModel.swift in Sources */,
 				4D4B192423A0A7B3002B78DB /* EffectManager.swift in Sources */,
+				4D8212D223BD653B00EBD281 /* FrameManager.swift in Sources */,
 				4DEDD80523A9B7690028F0CF /* Array+PixelColor.swift in Sources */,
 				4DBFD3C922B6D6CF00A18CB7 /* IntPoint.swift in Sources */,
 				4D626E0622B906DB0082631D /* TransformTool.swift in Sources */,

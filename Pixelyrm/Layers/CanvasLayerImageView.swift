@@ -17,12 +17,12 @@ struct CanvasLayerView: View {
     
     private var borderOpacity: Double {
         guard showsBorder else { return 0 }
-        return selected ? 0.5 : 0.25
+        return selected ? 0.5 : 0.1
     }
     
     private var borderWidth: CGFloat {
         guard showsBorder else { return 0 }
-        return selected ? 3 : 1
+        return selected ? 1 : 1
     }
     
     public init (canvasLayer: CanvasLayer, showsBorder: Bool = false, showsBackground: Bool = false, selected: Bool = false) {

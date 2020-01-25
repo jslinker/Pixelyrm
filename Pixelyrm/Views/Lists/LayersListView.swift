@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LayersListView : View {
     
-    @EnvironmentObject var layerManager: LayerManager
+    @EnvironmentObject var frameManager: FrameManager
     
     private let cellSize: CGSize
     private let layout: GridViewLayout
@@ -21,14 +21,19 @@ struct LayersListView : View {
     }
     
     var body: some View {
-        return GridListView(items: layerManager.layers,
-                     layout: layout,
-                     cellSize: cellSize,
-                     cellForItem: { layer, _ in
-                        CanvasLayerView(canvasLayer: layer, showsBorder: true, selected: self.layerManager.activeCanvasLayer == layer)
-        }, didSelect: { layer, _ in
-            self.layerManager.updateActiveCanvas(layer: layer)
-        })
+        VStack(spacing: 0) {
+            ForEach(frameManager.layeredCanvases.reversed()) { layeredCanvas in
+                return GridListView(items: layeredCanvas.layers,
+                                    layout: self.layout,
+                                    cellSize: self.cellSize,
+                                    cellForItem: { layer, _ in
+                                        CanvasLayerView(canvasLayer: layer, showsBorder: true, selected: self.frameManager.activeCanvasLayer == layer)
+                }, didSelect: { layer, _ in
+//                    self.frameManager.updateActiveLayeredCanvas(layeredCanvas: layeredCanvas)
+                    self.frameManager.updateActiveCanvas(layer: layer, inLayeredCanvas: layeredCanvas)
+                })
+            }
+        }
     }
     
 }

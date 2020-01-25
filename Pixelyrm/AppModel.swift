@@ -18,14 +18,14 @@ public class AppModel: ObservableObject {
     let menuManager: MenuManager
     let toolManager: ToolManager
     
-    // TODO: Update LayerManager to handle frames and make private
-    var layerManager: LayerManager {
+    // TODO: Make private
+    var frameManager: FrameManager {
         willSet {
             objectWillChange.send()
-            layerManager.prepareForNewLayerManager()
+            frameManager.prepareForNewFrameManager()
         }
         didSet {
-            updateLayerManagerChangeHandler()
+            updateFrameManagerChangeHandler()
         }
     }
     
@@ -36,15 +36,14 @@ public class AppModel: ObservableObject {
     @Published var colorPalette: ColorPalette = ColorPalette()
     
     public init() {
-        let layerManager = LayerManager()
         colorManager = ColorManager()
         effectManager = EffectManager()
+        frameManager = FrameManager()
         historyManager = HistoryManager()
-        self.layerManager = layerManager
         menuManager = MenuManager()
         toolManager = ToolManager(historyManager: historyManager)
         
-        drawManager = DrawManager(historyManager: historyManager, activeLayer: layerManager.activeCanvasLayer, tool: toolManager.activeTool, color: colorManager.primaryColor)
+        drawManager = DrawManager(historyManager: historyManager, activeLayer: frameManager.activeCanvasLayer, tool: toolManager.activeTool, color: colorManager.primaryColor)
         
         // TODO: Update to use objectWillChange?
         toolChangedHandler = self.toolChanged { [weak self] tool in
@@ -59,7 +58,7 @@ public class AppModel: ObservableObject {
                 myself.drawManager.color = myself.colorManager.primaryColor
         }
         
-        updateLayerManagerChangeHandler()
+        updateFrameManagerChangeHandler()
         
         DispatchQueue.main.async {
             // Using `DispatchQueue.main.async` to fix an issue where the color isn't set for the mac catalyst app
@@ -69,20 +68,21 @@ public class AppModel: ObservableObject {
         menuManager.appModel = self // TODO: Handle this better
     }
     
-    private func updateLayerManagerChangeHandler() {
-        drawManager.activeCanvasLayer = layerManager.activeCanvasLayer
-        activeLayerChangeHandler = layerManager.objectWillChange
+    private func updateFrameManagerChangeHandler() {
+        drawManager.activeCanvasLayer = frameManager.activeCanvasLayer
+        frameManager.historyManager = historyManager
+        activeLayerChangeHandler = frameManager.objectWillChange
             .throttle(for: 0.0, scheduler: RunLoop.main, latest: true) // Prevents the sink from being triggered multiple times from `objectWillChange` sends in the same cycle
             .receive(on: RunLoop.main)
             .sink { [weak self] in
                 guard let myself = self else { return }
-                myself.drawManager.activeCanvasLayer = myself.layerManager.activeCanvasLayer
+                myself.drawManager.activeCanvasLayer = myself.frameManager.activeCanvasLayer
         }
     }
     
 }
 
-// Tools
+// MARK: - Tools
 
 extension AppModel {
     
