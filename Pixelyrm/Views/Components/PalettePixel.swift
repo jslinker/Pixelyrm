@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct PalettePixelContent<Content>: View where Content: View {
+struct PalettePixelContent<Content: View>: View {
 
     let content: () -> Content
     let fillColor: Color

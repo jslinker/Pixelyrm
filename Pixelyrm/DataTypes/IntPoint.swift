@@ -9,7 +9,7 @@
 import Foundation
 import CoreGraphics
 
-public struct IntPoint: Hashable {
+public struct IntPoint: Hashable, Codable {
     let x: Int
     let y: Int
     

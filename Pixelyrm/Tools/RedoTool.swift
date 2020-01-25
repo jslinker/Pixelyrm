@@ -7,22 +7,18 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 
-extension RedoTool: ToolDisplayable {
-    static let toolDisplayableImage: UIImage.AssetName = .circle
-}
-
-struct RedoTool: ToolProtocol {
+public class RedoTool: Tool {
     
-    let historyManager: HistoryManager
-    let isSelectable: Bool = false
+    private let historyManager: HistoryManager
     
-    init(historyManager: HistoryManager) {
+    public init(historyManager: HistoryManager) {
         self.historyManager = historyManager
+        super.init(image: .symbol(.redo), isSelectable: false)
     }
     
-    func didTap() {
+    public override func didTap() {
         historyManager.redo()
     }
     

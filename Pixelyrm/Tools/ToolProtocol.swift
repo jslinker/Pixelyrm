@@ -40,20 +40,16 @@ public protocol ToolProtocol {
     
 }
 
-func ==(lhs: ToolProtocol, rhs: ToolProtocol) -> Bool {
-    return type(of: lhs) == type(of: rhs)
-}
-
 extension ToolProtocol {
     
-    var isSelectable: Bool { true }
-    var clearOnMoved: Bool { false }
-    var moveToDrawCanvasOnBegin: Bool { false }
-    var updateFromStart: Bool { false }
-    var color: PixelColor? { return nil }
+    public var isSelectable: Bool { true }
+    public var clearOnMoved: Bool { false }
+    public var moveToDrawCanvasOnBegin: Bool { false }
+    public var updateFromStart: Bool { false }
+    public var color: PixelColor? { return nil }
     
-    func canDraw(for state: ToolRunState) -> Bool { return false }
-    func didTap() {}
-    static func pointsToModify(startPoint: IntPoint, endPoint: IntPoint, inPixels pixels: [PixelColor], withSize size: IntSize, selectedColor: PixelColor) -> [IntPoint] { return [] }
+    public func canDraw(for state: ToolRunState) -> Bool { return false }
+    public func didTap() {}
+    public static func pointsToModify(startPoint: IntPoint, endPoint: IntPoint, inPixels pixels: [PixelColor], withSize size: IntSize, selectedColor: PixelColor) -> [IntPoint] { return [] }
     
 }

@@ -7,26 +7,27 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 
-extension RectangleOutlineTool: ToolDisplayable {
-    static let toolDisplayableImage: UIImage.AssetName = .square
-}
-
-struct RectangleOutlineTool: ToolProtocol {
+class RectangleOutlineTool: Tool {
     
-    let clearOnMoved: Bool = true
-    let moveToDrawCanvasOnBegin: Bool = false
-    let updateFromStart: Bool = true
+    public init() {
+        super.init(image: .symbol(.rect),
+                   isSelectable: true,
+                   clearOnMoved: true,
+                   moveToDrawCanvasOnBegin: false,
+                   updateFromStart: true,
+                   color: nil)
+    }
     
-    func canDraw(for state: ToolRunState) -> Bool {
+    public override func canDraw(for state: ToolRunState) -> Bool {
         switch state {
         case .begin, .move: return true
         case .end: return false
         }
     }
     
-    static func pointsToModify(startPoint: IntPoint, endPoint: IntPoint, inPixels pixels: [PixelColor], withSize size: IntSize, selectedColor: PixelColor) -> [IntPoint] {
+    public override class func pointsToModify(startPoint: IntPoint, endPoint: IntPoint, inPixels pixels: [PixelColor], withSize size: IntSize, selectedColor: PixelColor) -> [IntPoint] {
         let minX = min(startPoint.x, endPoint.x)
         let maxX = max(startPoint.x, endPoint.x)
         let minY = min(startPoint.y, endPoint.y)

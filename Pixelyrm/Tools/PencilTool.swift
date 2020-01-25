@@ -7,26 +7,27 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 
-extension PencilTool: ToolDisplayable {
-    static let toolDisplayableImage: UIImage.AssetName = .pencil
-}
-
-struct PencilTool: ToolProtocol {
+public class PencilTool: Tool {
     
-    let clearOnMoved: Bool = false
-    let moveToDrawCanvasOnBegin: Bool = true
-    let updateFromStart: Bool = false
+    public init() {
+        super.init(image: .symbol(.pencil),
+                   isSelectable: true,
+                   clearOnMoved: false,
+                   moveToDrawCanvasOnBegin: true,
+                   updateFromStart: false,
+                   color: nil)
+    }
     
-    func canDraw(for state: ToolRunState) -> Bool {
+    public override func canDraw(for state: ToolRunState) -> Bool {
         switch state {
         case .begin, .move: return true
         case .end: return false
         }
     }
     
-    static func pointsToModify(startPoint: IntPoint, endPoint: IntPoint, inPixels pixels: [PixelColor], withSize size: IntSize, selectedColor: PixelColor) -> [IntPoint] {
+    public override class func pointsToModify(startPoint: IntPoint, endPoint: IntPoint, inPixels pixels: [PixelColor], withSize size: IntSize, selectedColor: PixelColor) -> [IntPoint] {
         return LineTool.lineBresenham(startPoint: startPoint, endPoint: endPoint)
     }
     

@@ -15,8 +15,19 @@ public class AppModel: ObservableObject {
     let drawManager: DrawManager
     let effectManager: EffectManager
     let historyManager: HistoryManager
-    let layerManager: LayerManager
+    let menuManager: MenuManager
     let toolManager: ToolManager
+    
+    // TODO: Make private
+    var frameManager: FrameManager {
+        willSet {
+            objectWillChange.send()
+            frameManager.prepareForNewFrameManager()
+        }
+        didSet {
+            updateFrameManagerChangeHandler()
+        }
+    }
     
     private var toolChangedHandler: AnyCancellable?
     private var colorChangeHandler: AnyCancellable?
@@ -27,11 +38,12 @@ public class AppModel: ObservableObject {
     public init() {
         colorManager = ColorManager()
         effectManager = EffectManager()
+        frameManager = FrameManager()
         historyManager = HistoryManager()
-        layerManager = LayerManager()
+        menuManager = MenuManager()
         toolManager = ToolManager(historyManager: historyManager)
         
-        drawManager = DrawManager(historyManager: historyManager, activeLayer: layerManager.activeCanvasLayer, tool: toolManager.activeTool, color: colorManager.primaryColor)
+        drawManager = DrawManager(historyManager: historyManager, activeLayer: frameManager.activeCanvasLayer, tool: toolManager.activeTool, color: colorManager.primaryColor)
         
         // TODO: Update to use objectWillChange?
         toolChangedHandler = self.toolChanged { [weak self] tool in
@@ -46,26 +58,35 @@ public class AppModel: ObservableObject {
                 myself.drawManager.color = myself.colorManager.primaryColor
         }
         
-        activeLayerChangeHandler = layerManager.objectWillChange
-            .receive(on: RunLoop.main)
-            .sink { [weak self] in
-                guard let myself = self else { return }
-                myself.drawManager.activeCanvasLayer = myself.layerManager.activeCanvasLayer
-        }
+        updateFrameManagerChangeHandler()
         
         DispatchQueue.main.async {
             // Using `DispatchQueue.main.async` to fix an issue where the color isn't set for the mac catalyst app
             self.colorManager.primaryColor = self.colorPalette.colors.first ?? .black
         }
+        
+        menuManager.appModel = self // TODO: Handle this better
+    }
+    
+    private func updateFrameManagerChangeHandler() {
+        drawManager.activeCanvasLayer = frameManager.activeCanvasLayer
+        frameManager.historyManager = historyManager
+        activeLayerChangeHandler = frameManager.objectWillChange
+            .throttle(for: 0.0, scheduler: RunLoop.main, latest: true) // Prevents the sink from being triggered multiple times from `objectWillChange` sends in the same cycle
+            .receive(on: RunLoop.main)
+            .sink { [weak self] in
+                guard let myself = self else { return }
+                myself.drawManager.activeCanvasLayer = myself.frameManager.activeCanvasLayer
+        }
     }
     
 }
 
-// Tools
+// MARK: - Tools
 
 extension AppModel {
     
-    public func toolChanged(_ closure: @escaping (_ tool: ToolProtocol) -> Void) -> AnyCancellable {
+    public func toolChanged(_ closure: @escaping (_ tool: Tool) -> Void) -> AnyCancellable {
         return toolManager.toolPublisher
             .receive(on: RunLoop.main)
             .sink { closure($0) }

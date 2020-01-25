@@ -12,12 +12,12 @@ import UIKit
 
 public struct ZoomView<Content: View>: UIViewControllerRepresentable {
     
-    @EnvironmentObject var layerManager: LayerManager
+    @EnvironmentObject var frameManager: FrameManager
     
     public let content: () -> Content
     
     public func makeUIViewController(context: Context) -> UIScrollViewController<Content> {
-        let scrollViewController = UIScrollViewController(rootView: self.content(), contentSize: layerManager.size.cgSize)
+        let scrollViewController = UIScrollViewController(rootView: self.content(), contentSize: frameManager.size.cgSize)
         return scrollViewController
     }
     
@@ -27,6 +27,7 @@ public struct ZoomView<Content: View>: UIViewControllerRepresentable {
     
 }
 
+// TODO: Mouse scrolling doesn't work on Mac Catalyst, update to make this work
 public class UIScrollViewController<Content: View>: UIViewController, UIScrollViewDelegate {
     
     lazy var scrollView: UIScrollView = {

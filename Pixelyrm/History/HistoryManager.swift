@@ -9,7 +9,7 @@
 import Combine
 import Foundation
 
-class HistoryManager: ObservableObject {
+public class HistoryManager: ObservableObject {
     
     private let undoManager: UndoManager = UndoManager()
     
@@ -23,6 +23,11 @@ class HistoryManager: ObservableObject {
     
     public func registerUndo<TargetType>(withTarget target: TargetType, handler: @escaping (TargetType) -> Void) where TargetType : AnyObject {
         undoManager.registerUndo(withTarget: target, handler: handler)
+    }
+    
+    public func clearHistory() {
+        // TODO: Make the undo/redo buttons look enabled/disabled as needed
+        undoManager.removeAllActions()
     }
     
 }

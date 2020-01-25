@@ -31,13 +31,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
             .environmentObject(appModel)
+            // TODO: Move these into views by referencing `appModel` so if any of them change they will be updated at the view level instead of not updating
             .environmentObject(appModel.colorManager)
             .environmentObject(appModel.colorPalette)
             .environmentObject(appModel.drawManager)
             .environmentObject(appModel.historyManager)
             .environmentObject(appModel.toolManager)
             .environmentObject(appModel.effectManager)
-            .environmentObject(appModel.layerManager)
+            .environmentObject(appModel.menuManager)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

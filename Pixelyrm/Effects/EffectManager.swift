@@ -16,11 +16,11 @@ protocol PixelEffect {
     func run(on pixels: [PixelColor], size: IntSize, closure: PixelColorClosure)
 }
 
-class EffectManager: ObservableObject {
+public class EffectManager: ObservableObject {
     
     @Published var effects: [PixelEffect]  = [PixelEffect]()
     
-    init() {
+    public init() {
         effects = []
     }
     

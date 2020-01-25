@@ -27,7 +27,8 @@ extension PixelColor: Identifiable {
 
 // TODO: Store hash value on init and when the value changes so equality checks are faster
 // TODO: Look into making the pixel data a UInt32 so comparisons are faster?
-public struct PixelColor: Hashable, Equatable {
+public struct PixelColor: Hashable, Equatable, Codable {
+    // TODO: Check if this needs to be optimized for Codable
     
     var alpha: UInt8
     var red: UInt8

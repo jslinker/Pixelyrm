@@ -12,6 +12,8 @@ struct ContentView: View {
     
     @Environment(\.verticalSizeClass) var sizeClass
     
+    @EnvironmentObject var appModel: AppModel
+    
     var useWide: Bool {
         #if targetEnvironment(macCatalyst)
         return true
@@ -24,8 +26,10 @@ struct ContentView: View {
         return VStack(spacing: 0) {
             if useWide {
                 WideView()
+                    .environmentObject(self.appModel.frameManager)
             } else {
                 CompactView()
+                    .environmentObject(self.appModel.frameManager)
             }
         }
             .background(Color.init(red: 0.1, green: 0.1, blue: 0.1).edgesIgnoringSafeArea(.all)) // TODO: Make a color theme
