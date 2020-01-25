@@ -20,6 +20,8 @@ This project was originally created pre-Combine/SwiftUI. I started over using Co
 * Panning/Zooming
 * Frames/Layers
 * Landscape/Portrait
+* Saving/Loading
+  - Doesn't support different files yet, saves/loads from the same location
 
 # TODO:
 * Update icons
@@ -31,4 +33,5 @@ This project was originally created pre-Combine/SwiftUI. I started over using Co
 * Clean up code
 * Add Onion Skin
 * Add Effects/Filters
+* Support multiple save files
 * Etc...
