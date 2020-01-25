@@ -4,7 +4,7 @@ Pixel Art App mostly built using SwiftUI and Combine. Supports iPhone, iPad, and
 
 This project was originally created pre-Combine/SwiftUI. I started over using Combine/SwiftUI and stripped out features and added stuff that isn't being used yet.
 
-Features
+Features:
 * History (Undo/Redo)
   - drawing
   - changing frames/layers
